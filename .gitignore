@@ -1,0 +1,19 @@
+# Windows
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+~$*
+
+# Python / analysis artifacts
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Large or controlled reference files
+*.pdf
+
+# Claude/local tool files
+.claude/settings.local.json
