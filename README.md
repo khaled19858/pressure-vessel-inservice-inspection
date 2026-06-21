@@ -23,19 +23,12 @@ This repository shall be treated as a controlled engineering workspace. Engineer
 
 The following templates are maintained in this repository. Each template is a Markdown file structured for direct use in engineering reports and calculations.
 
-  Template                                   Path
-  -----------------------------------------  ----------------------------------------------------------
-  API 579 Pitting Assessment                 templates/FFS/api-579-pitting-assessment-template.md
-  API 510 Inspection Report                  templates/inspection-plan/api-510-pressure-vessel-inspection-report-template.md
-  ASME VIII-1 Calculation Check Sheet        templates/calculation-checks/asme-viii-1-pressure-component-calculation-check-sheet.md
-  CML / UT Thickness Mapping                 templates/CML-UT-mapping/cml-ut-thickness-mapping-template.md
-
-Intended use:
-
-- API 579 Pitting Assessment: Level 1 and Level 2 pitting and local metal loss fitness-for-service assessment per API 579-1/ASME FFS-1.
-- API 510 Inspection Report: Structured inspection reporting per API 510 including damage mechanism review, thickness data, MAWP check, and recommendations.
-- ASME VIII-1 Calculation Check Sheet: Pressure-boundary calculations for shells, heads, and nozzles per ASME Section VIII Division 1 including MAWP and hydrotest.
-- CML / UT Thickness Mapping: CML placement, UT reading tables, and clock-position mapping for corrosion monitoring programs.
+| Template | Path | Intended Use |
+|---|---|---|
+| API 579 Pitting Assessment | templates/FFS/api-579-pitting-assessment-template.md | Level 1 and Level 2 pitting and local metal loss fitness-for-service assessment per API 579-1/ASME FFS-1. |
+| API 510 Inspection Report | templates/inspection-plan/api-510-pressure-vessel-inspection-report-template.md | Structured inspection reporting per API 510 including damage mechanism review, thickness data, MAWP check, and recommendations. |
+| ASME VIII-1 Calculation Check Sheet | templates/calculation-checks/asme-viii-1-pressure-component-calculation-check-sheet.md | Pressure-boundary calculations for shells, heads, and nozzles per ASME Section VIII Division 1 including MAWP and hydrotest. |
+| CML / UT Thickness Mapping | templates/CML-UT-mapping/cml-ut-thickness-mapping-template.md | CML placement, UT reading tables, and clock-position mapping for corrosion monitoring programs. |
 
 ## Workflow
 
