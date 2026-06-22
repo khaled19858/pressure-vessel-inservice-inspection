@@ -8,7 +8,67 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
-No unreleased changes at this time.
+### Added
+
+#### Controlled templates
+
+- `templates/damage-mechanism-review/api-571-damage-mechanism-review-template.md`
+  API 571 damage mechanism review template for pressure vessels and
+  pressure-boundary equipment. Covers document control, equipment
+  identification, process and service description, materials of construction,
+  operating conditions, process chemistry, damage mechanism screening table,
+  credible and non-credible mechanisms, susceptibility factors, inspection
+  history, inspection effectiveness, CML and UT evidence, NDE evidence,
+  process chemistry evidence, active versus potential mechanisms, consequence
+  notes, recommended inspection methods, recommended CML locations, mitigation
+  and monitoring actions, FFS triggers, assumptions, limitations, and approval
+  block.
+
+- `templates/FFS/api-579-general-ffs-assessment-report-template.md`
+  General fitness-for-service assessment report template per API
+  579-1/ASME FFS-1. Covers document control, executive summary, equipment
+  data, assessment scope, damage mechanism, assessment level selection,
+  applicable Part selection (Parts 4 through 14), input data (design,
+  operating, geometry, material, inspection readings, flaw dimensions),
+  assumptions, required thickness basis, inspection data, structured
+  calculation workflow (required thickness, damage characterization, remaining
+  thickness, MAWP, remaining life), results table, sensitivity checks, MAWP
+  impact, acceptability statement, limitations, recommendations, and approval
+  block.
+
+- `templates/FFS/ffs-assessment-input-data-sheet.md`
+  Pre-assessment input data collection sheet for API 579-1/ASME FFS-1. Covers
+  equipment identification, design data, operating data, material data,
+  geometry, corrosion allowance and future corrosion allowance, UT inspection
+  readings, flaw dimensions, NDE method and coverage, damage type
+  classification, assessment temperature and pressure, weld details, toughness
+  and cyclic service screening, missing data register, assumptions, and
+  reviewer sign-off. Requires resolution of all missing data before assessment
+  proceeds.
+
+- `templates/inspection-plan/rbi-inspection-planning-template.md`
+  Risk-based inspection planning template per API 580 and API 581. Covers
+  document control, equipment list, process unit and service description,
+  damage mechanism review summary, consequence screening (fluid hazard,
+  inventory, personnel and environmental impact), likelihood screening
+  (damage factor inputs and inspection effectiveness factor), risk ranking
+  table, inspection history and open items, current inspection effectiveness
+  assessment, recommended inspection strategy, CML strategy (existing and
+  proposed CMLs), NDE method selection, inspection interval basis (remaining
+  life, regulatory limits, safety factors), deferral and escalation triggers
+  (including chemistry exceedance parameters), data quality notes, assumptions,
+  limitations, and approval block.
+
+- `templates/recommendations/inspection-recommendation-technical-note-template.md`
+  Inspection recommendation and technical note template. Covers document
+  control, background, issue statement, inspection finding (location,
+  dimensions, NDE method, classification), technical basis (damage mechanism,
+  corrosion rate and trend, required and retirement thickness, code basis),
+  risk consideration (safety, environmental, production), options considered,
+  recommended action, priority classification, due date basis, required
+  shutdown or online action scope, follow-up inspection and interim monitoring,
+  responsible party table, assumptions, limitations, approval block, and
+  revision history.
 
 ---
 

@@ -26,9 +26,14 @@ The following templates are maintained in this repository. Each template is a Ma
 | Template | Path | Intended Use |
 |---|---|---|
 | API 579 Pitting Assessment | templates/FFS/api-579-pitting-assessment-template.md | Level 1 and Level 2 pitting and local metal loss fitness-for-service assessment per API 579-1/ASME FFS-1. |
+| API 579 General FFS Assessment Report | templates/FFS/api-579-general-ffs-assessment-report-template.md | General fitness-for-service assessment report covering all API 579-1/ASME FFS-1 Parts, including assessment level selection, input data, calculation workflow, results, and acceptability statement. |
+| FFS Assessment Input Data Sheet | templates/FFS/ffs-assessment-input-data-sheet.md | Pre-assessment data collection sheet capturing design data, operating data, material data, geometry, corrosion allowance, inspection readings, flaw dimensions, NDE method, weld details, toughness/cyclic screening, and missing data register. |
 | API 510 Inspection Report | templates/inspection-plan/api-510-pressure-vessel-inspection-report-template.md | Structured inspection reporting per API 510 including damage mechanism review, thickness data, MAWP check, and recommendations. |
+| RBI and Inspection Planning | templates/inspection-plan/rbi-inspection-planning-template.md | Risk-based inspection planning covering equipment list, damage mechanism review summary, consequence screening, likelihood screening, risk ranking, inspection strategy, CML strategy, NDE method selection, interval basis, and deferral triggers. |
 | ASME VIII-1 Calculation Check Sheet | templates/calculation-checks/asme-viii-1-pressure-component-calculation-check-sheet.md | Pressure-boundary calculations for shells, heads, and nozzles per ASME Section VIII Division 1 including MAWP and hydrotest. |
 | CML / UT Thickness Mapping | templates/CML-UT-mapping/cml-ut-thickness-mapping-template.md | CML placement, UT reading tables, and clock-position mapping for corrosion monitoring programs. |
+| API 571 Damage Mechanism Review | templates/damage-mechanism-review/api-571-damage-mechanism-review-template.md | Damage mechanism review for pressure vessels and pressure-boundary equipment covering credible and non-credible mechanisms, susceptibility factors, inspection history, inspection effectiveness, CML/UT evidence, NDE evidence, process chemistry evidence, active versus potential mechanisms, and FFS triggers. |
+| Inspection Recommendation and Technical Note | templates/recommendations/inspection-recommendation-technical-note-template.md | Technical note for inspection findings and recommendations covering issue statement, inspection finding, technical basis, risk consideration, options, recommended action, priority, due date, shutdown or online requirements, follow-up inspection, and responsible party. |
 
 ## Workflow
 
