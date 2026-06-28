@@ -3,6 +3,20 @@
 
 ---
 
+> **CODE-VERIFICATION NOTICE (read before use).** The numeric screening criteria in
+> the Level 1 and Level 2 sections below (for example, the remaining-thickness-ratio
+> threshold, the pit diameter limit, the pit spacing limit, the pitting-chart /
+> RSF approach, and the allowable RSF) are **edition dependent**. They must be
+> verified against the controlling edition of API 579-1/ASME FFS-1, Part 6, and its
+> ties to Part 5, before they are relied upon. Do not treat the constants embedded
+> in this template as authoritative without that verification, and do not substitute
+> alternative constants from memory. Where a value cannot be confirmed, treat it as
+> a hold point and resolve it before issuing the assessment. Any acceptable result
+> shall also be cross-checked against the corroded MAWP being at or above the
+> operating pressure (Section 8.6).
+
+---
+
 ## 1. Executive Summary
 
 | Item | Entry |
@@ -123,7 +137,7 @@ Record all pits within the assessment zone. For extensive pitting, grid-map and 
 
 **Primary Damage Mechanism:** Pitting Corrosion
 
-**API 571 Reference:** Section 5.1.2 (Uniform Corrosion) / Section 5.1.6 (Pitting Corrosion)
+**API 571 Reference:** Confirm the applicable API 571 section(s) for the specific pitting/uniform-corrosion mechanism in this service against the controlling edition.
 
 | Item | Description |
 |------|-------------|
@@ -139,10 +153,13 @@ Record all pits within the assessment zone. For extensive pitting, grid-map and 
 
 ## 5. Applicable Code Basis
 
-- **FFS Standard:** API 579-1/ASME FFS-1, Edition: ________
-- **Part 6:** Assessment of Pitting Corrosion
+- **FFS Standard:** API 579-1/ASME FFS-1, Edition: ________ , Part 6
 - **Design Code:** ASME Section VIII Division 1, Edition: ________
 - **Allowable Stress Source:** ASME II Part D, Table 1-A, Edition: ________
+
+> Confirm that the Part 6 methodology and all numeric criteria used below match the
+> stated edition. Part 6 relies on Part 5 (local/general metal loss) for portions of
+> the evaluation; confirm those cross-references for the stated edition.
 
 ---
 
@@ -174,7 +191,8 @@ Record all pits within the assessment zone. For extensive pitting, grid-map and 
 4. No credit is taken for any remaining original corrosion allowance beyond the FCA stated.
 5. Weld joint efficiency `E` = ________ is assumed uniform in the assessment zone.
 6. No external pressure, cyclic loading, or elevated-temperature creep conditions are present unless noted.
-7. [Add additional assumptions specific to this assessment]
+7. All numeric Part 6 screening criteria used below have been verified against the controlling API 579-1/ASME FFS-1 edition (see code-verification notice).
+8. [Add additional assumptions specific to this assessment]
 
 ---
 
@@ -216,6 +234,12 @@ t_req = P × D_c / (2 × S × E − 0.2 × P)
 
 *(Use the formula applicable to this component.)*
 
+> The UG-32(c) form above applies to a standard 2:1 ellipsoidal head (h = D/4). For
+> a non-2:1 ratio, use the factor K per Mandatory Appendix 1-4(c); do not use the
+> simplified formula. The governing required thickness should also respect the
+> ASME VIII-1 UG-16(b) minimum-thickness floor — see
+> `references/minimum-thickness-governing-logic.md`.
+
 | Parameter | Value | Unit |
 |-----------|-------|------|
 | P (design pressure) | | kPa / psi |
@@ -236,7 +260,13 @@ t_min_allow = t_req   (for structural adequacy, per API 579-1 Part 6)
 | t_req | | mm / in |
 | t_min_allow | | mm / in |
 
-### 8.4 Level 1 Screening — API 579-1 Part 6, para. 6.4
+### 8.4 Level 1 Screening — API 579-1 Part 6
+
+> **Verify every constant in this subsection against the controlling edition before
+> use.** The threshold values shown are placeholders pending that verification and
+> must not be applied as authoritative without confirmation against API 579-1/ASME
+> FFS-1, Part 6 (and Part 5 where cross-referenced). If a value cannot be confirmed,
+> stop and resolve it as a hold point.
 
 **Criterion 1 — Sound metal thickness:**
 
@@ -254,10 +284,11 @@ t_available ≥ t_min_allow
 RTR = (t_rem_min − FCA) / t_req
 ```
 
-The Level 1 acceptance criterion is:
+The Level 1 acceptance threshold for RTR shall be taken from the controlling
+edition (the value commonly cited is shown below and **must be verified**):
 
 ```
-RTR ≥ 0.20
+RTR ≥ [verify threshold per controlling edition]
 ```
 
 | Parameter | Value | Unit |
@@ -266,12 +297,16 @@ RTR ≥ 0.20
 | FCA | | mm / in |
 | t_req | | mm / in |
 | **RTR = (t_rem_min − FCA) / t_req** | | — |
-| Criterion: RTR ≥ 0.20 | | Pass / Fail |
+| Threshold (from controlling edition) | | — |
+| Criterion: RTR ≥ threshold | | Pass / Fail |
 
 **Criterion 3 — Pit dimension limit (Level 1):**
 
+The pit-size limit expression and its constant shall be taken from the controlling
+edition. The commonly cited form is shown below and **must be verified**:
+
 ```
-d ≤ 0.2 × √(D_c × t_nom)
+d ≤ [constant per edition] × √(D_c × t_nom)
 ```
 
 | Parameter | Value | Unit |
@@ -279,19 +314,22 @@ d ≤ 0.2 × √(D_c × t_nom)
 | D_c | | mm / in |
 | t_nom | | mm / in |
 | √(D_c × t_nom) | | mm / in |
-| 0.2 × √(D_c × t_nom) | | mm / in |
+| Limit (constant × √(D_c × t_nom)) | | mm / in |
 | d (largest pit diameter) | | mm / in |
 | Criterion: d ≤ limit | | Pass / Fail |
 
 **Criterion 4 — Pit spacing (Level 1):**
 
+The pit-spacing limit expression and its constant shall be taken from the
+controlling edition. The commonly cited form is shown below and **must be verified**:
+
 ```
-s ≥ 2 × √(D_c × t_nom)
+s ≥ [constant per edition] × √(D_c × t_nom)
 ```
 
 | Parameter | Value | Unit |
 |-----------|-------|------|
-| 2 × √(D_c × t_nom) | | mm / in |
+| Limit (constant × √(D_c × t_nom)) | | mm / in |
 | s (minimum pit spacing) | | mm / in |
 | Criterion: s ≥ limit | | Pass / Fail |
 
@@ -301,11 +339,12 @@ s ≥ 2 × √(D_c × t_nom)
 
 ---
 
-### 8.5 Level 2 Assessment — API 579-1 Part 6, para. 6.5
+### 8.5 Level 2 Assessment — API 579-1 Part 6
 
-*Complete this section only if Level 1 was not satisfied.*
+*Complete this section only if Level 1 was not satisfied. Verify the pitting-chart
+/ RSF methodology and all figure/table references against the controlling edition.*
 
-#### 8.5.1 Pitting Chart Approach (para. 6.5.2)
+#### 8.5.1 Pitting Chart Approach
 
 Step 1 — Determine the average pit depth ratio (ρ):
 
@@ -331,10 +370,12 @@ Pit density = N_pits / A_survey
 | A_survey (survey area) | | mm² / in² |
 | Pit density | | pits/mm² or pits/in² |
 
-Step 3 — Enter API 579-1 Part 6 Figure 6.10 (or Table 6.2) with `ρ` and pit density to obtain allowable remaining strength factor RSF_a for pitting:
+Step 3 — Using the pit parameters, obtain the remaining strength factor for pitting
+from the applicable API 579-1 Part 6 pitting chart / table for the controlling
+edition (confirm the correct figure/table number and procedure):
 
 ```
-RSF_pit = f(ρ, pit density)   [from Figure 6.10 / Table 6.2]
+RSF_pit = f(pit parameters)   [from the controlling-edition pitting chart / table]
 ```
 
 | Parameter | Value |
@@ -346,23 +387,27 @@ RSF_pit = f(ρ, pit density)   [from Figure 6.10 / Table 6.2]
 Step 4 — Evaluate acceptability:
 
 ```
-RSF_pit ≥ RSF_a   where RSF_a = 0.90 (default, ASME VIII-1)
+RSF_pit ≥ RSF_a
 ```
+
+where RSF_a is the allowable remaining strength factor (default 0.90 for ASME
+VIII-1; confirm for the controlling edition).
 
 | Check | Value | Criterion | Pass / Fail |
 |-------|-------|-----------|-------------|
-| RSF_pit | | ≥ 0.90 | |
+| RSF_pit | | ≥ RSF_a | |
 
-#### 8.5.2 Equivalent General Metal Loss (Alternative — para. 6.5.3)
+#### 8.5.2 Equivalent General Metal Loss (Alternative)
 
-If pitting is modeled as equivalent uniform corrosion:
+If pitting is modeled as equivalent uniform corrosion (confirm the applicable Part 6
+/ Part 5 procedure for the controlling edition):
 
 ```
 t_eq_loss = ρ × t_mm
 t_rem_eq = t_mm − t_eq_loss
 ```
 
-Assess using Part 4 (general metal loss) methodology:
+Assess using the Part 5 (general/local metal loss) methodology:
 
 ```
 MAWP_pit = S × E × (t_rem_eq − FCA) / (R_c + 0.6 × (t_rem_eq − FCA))
@@ -398,6 +443,10 @@ MAWP_corroded = S × E × t_available / (R_c + 0.6 × t_available)
 | Operating pressure P_op | | kPa / psi |
 | MAWP_corroded ≥ P_op? | | Yes / No |
 
+> Any "ACCEPTABLE" screening result shall be consistent with MAWP_corroded ≥ P_op.
+> If the screening passes but MAWP_corroded < P_op, the result is NOT acceptable at
+> the current operating pressure.
+
 ---
 
 ### 8.7 Remaining Life and Next Inspection Interval
@@ -415,6 +464,9 @@ t_remaining_life = (t_available − t_req) / CR
 | Inspection interval (½ remaining life, max per API 510) | | years |
 | Next inspection due date | | |
 
+> Corrosion-rate selection and interval limits follow
+> `references/corrosion-rate-and-interval-conventions.md`.
+
 ---
 
 ## 9. Results Summary
@@ -422,10 +474,10 @@ t_remaining_life = (t_available − t_req) / CR
 | Assessment Item | Criterion | Actual Value | Result |
 |----------------|-----------|--------------|--------|
 | t_available ≥ t_min_allow | t_available ≥ t_req | | Pass / Fail |
-| RTR ≥ 0.20 (Level 1) | ≥ 0.20 | | Pass / Fail |
-| Pit diameter criterion (Level 1) | d ≤ 0.2√(D_c t_nom) | | Pass / Fail |
-| Pit spacing criterion (Level 1) | s ≥ 2√(D_c t_nom) | | Pass / Fail |
-| RSF_pit ≥ RSF_a (Level 2, if applicable) | ≥ 0.90 | | Pass / Fail |
+| RTR ≥ threshold (Level 1) | per controlling edition | | Pass / Fail |
+| Pit diameter criterion (Level 1) | per controlling edition | | Pass / Fail |
+| Pit spacing criterion (Level 1) | per controlling edition | | Pass / Fail |
+| RSF_pit ≥ RSF_a (Level 2, if applicable) | ≥ RSF_a | | Pass / Fail |
 | MAWP_corroded ≥ P_op | ≥ P_op | | Pass / Fail |
 
 ---
@@ -477,7 +529,7 @@ t_remaining_life = (t_available − t_req) / CR
 
 ## 13. References
 
-- API 579-1/ASME FFS-1, Fitness-For-Service, Edition: _________, Part 6
+- API 579-1/ASME FFS-1, Fitness-For-Service, Edition: _________, Part 6 (and Part 5 where cross-referenced)
 - ASME Section VIII Division 1, Edition: _________
 - ASME Section II Part D, Edition: _________
 - API 510, Pressure Vessel Inspection Code, Edition: _________
@@ -498,4 +550,4 @@ t_remaining_life = (t_available − t_req) / CR
 
 ---
 
-*This assessment is valid for the stated operating conditions and inspection data only. Any change in service, operating pressure, operating temperature, or discovery of additional damage requires reassessment.*
+*This assessment is valid for the stated operating conditions and inspection data only. Any change in service, operating pressure, operating temperature, or discovery of additional damage requires reassessment. All numeric Part 6 screening criteria shall be verified against the controlling edition before issue.*

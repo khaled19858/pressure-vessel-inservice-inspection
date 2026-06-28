@@ -72,6 +72,114 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [v0.2.0] - 2026-06-28
+
+Integrity-hardening release. Closes a code-correctness gap (UG-16(b) minimum
+thickness), adds a reference/convention layer and a fully worked example, adds an
+MDMT screening template, and flags edition-dependent FFS constants for
+verification. No fabricated clause numbers, formulas, allowable stresses, or
+acceptance constants were introduced; values that must come from the code are left
+as fields or hold points with read-from-code pointers.
+
+### Added
+
+#### Controlled reference documents
+
+- `references/symbols-and-conventions.md`
+  Single source of truth for symbol definitions, sign conventions, and units used
+  across all templates. Establishes that `t_req` always means the governing
+  required thickness, not the pressure value alone.
+
+- `references/minimum-thickness-governing-logic.md`
+  Defines the governing required thickness as `max(t_pressure, t_UG16b, t_struct)`
+  and documents the ASME VIII-1 UG-16(b) minimum-thickness floor (1.5 mm / 1/16 in.
+  exclusive of corrosion allowance), including its exclusions and service-specific
+  provisions to be read from the controlling edition.
+
+- `references/corrosion-rate-and-interval-conventions.md`
+  Defines short-term and long-term corrosion-rate formulas, governing-rate
+  selection, remaining life, and the API 510 interval basis (lesser of half
+  remaining life or the prescriptive maximum), with edition-dependent limits
+  flagged for verification.
+
+- `references/input-data-schema.md`
+  Optional YAML front-matter input convention so inputs are declared once with
+  unit and source, plus validation rules and hold-point handling before any
+  calculation proceeds.
+
+- `references/damage-mechanism-quick-screen.md`
+  Service-to-mechanism screening aid to support the API 571 damage mechanism
+  review. Explicitly a screening aid only; every flagged mechanism is to be
+  confirmed against API 571.
+
+#### Controlled templates
+
+- `templates/calculation-checks/ucs-66-mdmt-screening-template.md`
+  MDMT / impact-test exemption screening worksheet per ASME VIII-1 UCS-66,
+  UCS-66.1, UCS-68(c), UG-20(f), and UG-84. Provides the procedure and fields
+  only; curve assignments, figure values, and temperature reductions are read
+  from the controlling edition and never entered from memory.
+
+#### Worked example
+
+- `examples/worked-example-vertical-vessel-mawp-remaining-life.md`
+  End-to-end worked example (vertical vessel, 2:1 ellipsoidal head) demonstrating
+  corroded geometry, the UG-16(b) governing-thickness check, circumferential and
+  longitudinal shell checks, governing MAWP, UG-99(b) hydrotest pressure, and
+  remaining life with the half-life interval basis. All arithmetic verified. The
+  allowable stress used is labeled as illustrative and is not a code lookup.
+
+#### Governance and tooling
+
+- `CONTRIBUTING.md`
+  Document-control rules, revision/status convention, branch and pull-request
+  workflow, and the technical-accuracy review checklist.
+
+- `.github/pull_request_template.md`
+  Pull-request template with a required technical-accuracy checklist.
+
+### Changed
+
+- `CLAUDE.md`
+  Added governing rules for: the UG-16(b) minimum-thickness floor and governing
+  required thickness; restriction of the simplified UG-32(c) formula to 2:1
+  ellipsoidal heads (Appendix 1-4(c) otherwise); UG-99(b) hydrotest using the
+  lowest stress ratio across all materials with the multiplier flagged as
+  edition-dependent; MDMT/UCS-66 screening instead of silently skipping toughness;
+  treating API 579 numeric screening constants as edition-dependent and verifying
+  them; and a rounding / significant-figures convention. Added cross-references to
+  the new `references/` documents. All original content preserved.
+
+- `templates/calculation-checks/asme-viii-1-pressure-component-calculation-check-sheet.md`
+  Added Section 7A (Minimum Thickness Floor and Governing Required Thickness,
+  UG-16(b)); updated the shell and each head/cone section to report the governing
+  required thickness as `max(t_pressure, t_UG16b, t_struct)`; restricted the
+  simplified UG-32(c) ellipsoidal formula to 2:1 heads; updated the hydrostatic
+  test section to use the lowest stress ratio (LSR) across all materials with the
+  multiplier flagged as edition-dependent; added a UG-16(b) reviewer-checklist
+  subsection and updated related checklist items and limitations. All original
+  content preserved.
+
+- `templates/FFS/api-579-pitting-assessment-template.md`
+  Added a prominent code-verification notice; reworded the Level 1 and Level 2
+  numeric screening constants (remaining-thickness-ratio threshold, pit
+  diameter/spacing limits, pitting-chart/RSF approach) as edition-dependent values
+  to be verified rather than asserted; added a non-2:1 ellipsoidal head note and a
+  UG-16(b) cross-reference; and added an explicit cross-check that any acceptable
+  result is consistent with corroded MAWP >= operating pressure. No screening
+  constants were changed to fabricated alternatives. All original content
+  preserved.
+
+### Notes
+
+- The API 510 inspection report template (`templates/inspection-plan/`) was not
+  modified in this release. Its required-thickness basis is now governed by
+  `references/minimum-thickness-governing-logic.md` and the `CLAUDE.md` rule. An
+  inline UG-16(b) cross-reference note in that report can be added as a small
+  follow-up change once the style of this release is reviewed.
+
+---
+
 ## [v0.1.0] - 2026-06-20
 
 ### Initial controlled pressure vessel inspection workspace baseline
@@ -139,6 +247,6 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
-[Unreleased]: https://github.com/khaled19858/pressure-vessel-inservice-inspection/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/khaled19858/pressure-vessel-inservice-inspection/compare/v0.2.0...HEAD
+[v0.2.0]: https://github.com/khaled19858/pressure-vessel-inservice-inspection/compare/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/khaled19858/pressure-vessel-inservice-inspection/releases/tag/v0.1.0
-

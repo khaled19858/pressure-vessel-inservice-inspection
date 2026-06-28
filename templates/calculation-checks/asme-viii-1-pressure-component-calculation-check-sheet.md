@@ -117,6 +117,26 @@
 
 ---
 
+## 7A. Minimum Thickness Floor and Governing Required Thickness (UG-16(b))
+
+*The required thickness for any component is the governing value, not the pressure value alone. See `references/minimum-thickness-governing-logic.md`.*
+
+```
+t_req = max( t_pressure , t_UG16b , t_struct )
+```
+
+| Parameter | Symbol | Value | Unit |
+|---|---|---|---|
+| Pressure-required thickness (from UG-27 / UG-32, corroded) | t\_pressure | | mm / in |
+| UG-16(b) minimum thickness floor (exclusive of CA) | t\_UG16b | 1.5 mm (1/16 in.) unless a service-specific provision applies | mm / in |
+| Structural / supplemental-load minimum (if applicable) | t\_struct | | mm / in |
+| **Governing required thickness** | **t\_req = max(...)** | | **mm / in** |
+| Criterion that governs | - | [ ] Pressure [ ] UG-16(b) [ ] Structural | - |
+
+> UG-16(b) sets a minimum thickness of 1.5 mm (1/16 in.) for shells and heads after forming, **exclusive of corrosion allowance**, subject to the exclusions and service-specific provisions in UG-16(b). If a special service (e.g., compressed air, steam, water) or component applies, use that provision and cite it; do not enter a service-specific value from memory. The UG-16(b) check shall be performed for every component below, and where it governs it shall be stated explicitly.
+
+---
+
 ## 8. Cylindrical Shell - Internal Pressure (UG-27)
 
 ### 8.1 Required Thickness
@@ -145,14 +165,22 @@ t_req = P_total x R_c / (2 x S x E + 0.4 x P_total)
 |---|---|---|---|
 | **Required thickness (long. stress)** | **t\_req\_L** | | **mm / in** |
 
-**Governing required shell thickness:**
+**Pressure-governing required shell thickness:**
 
 ```
-t_req = max(t_req_c, t_req_L)
+t_pressure = max(t_req_c, t_req_L)
 ```
 
-| Governing t\_req | | mm / in |
+**Governing required shell thickness (apply UG-16(b) floor, Section 7A):**
+
+```
+t_req = max( t_pressure , t_UG16b , t_struct )
+```
+
+| t\_pressure = max(t\_req\_c, t\_req\_L) | | mm / in |
 |---|---|---|
+| **Governing t\_req = max(t\_pressure, t\_UG16b, t\_struct)** | | mm / in |
+| Criterion that governs | [ ] Pressure [ ] UG-16(b) [ ] Structural | |
 | Required nominal thickness (t\_req + CA) | | mm / in |
 | Actual nominal thickness (t\_nom) | | mm / in |
 | **Adequacy** | [ ] ADEQUATE (t\_nom >= t\_req + CA) [ ] INADEQUATE | |
@@ -181,7 +209,7 @@ MAWP_L = 2 x S x E x t_c / (R_c - 0.4 x t_c)
 
 ## 9. Ellipsoidal Head - Internal Pressure (UG-32(c))
 
-*Applies to 2:1 semi-ellipsoidal heads. D is the corroded inside diameter.*
+*Applies to 2:1 semi-ellipsoidal heads (h = D/4). D is the corroded inside diameter. For non-2:1 ratios do not use this formula; use the factor K per Mandatory Appendix 1-4(c).*
 
 ```
 t_req = P_total x D_c / (2 x S x E - 0.2 x P_total)
@@ -193,7 +221,8 @@ t_req = P_total x D_c / (2 x S x E - 0.2 x P_total)
 | Corroded inside diameter | D\_c | | mm / in |
 | Allowable stress | S | | MPa / psi |
 | Joint efficiency | E | | - |
-| **Required head thickness** | **t\_req\_h** | | **mm / in** |
+| Pressure-required head thickness | t\_pressure\_h | | mm / in |
+| **Governing required head thickness (apply UG-16(b))** | **t\_req\_h = max(t\_pressure\_h, t\_UG16b, t\_struct)** | | **mm / in** |
 | Required nominal thickness (t\_req\_h + CA) | | | mm / in |
 | Actual nominal head thickness (t\_h) | | | mm / in |
 | **Adequacy** | [ ] ADEQUATE [ ] INADEQUATE | | |
@@ -224,7 +253,8 @@ t_req = 0.885 x P_total x L / (S x E - 0.1 x P_total)
 | Knuckle radius | r | | mm / in |
 | Allowable stress | S | | MPa / psi |
 | Joint efficiency | E | | - |
-| **Required head thickness** | **t\_req\_h** | | **mm / in** |
+| Pressure-required head thickness | t\_pressure\_h | | mm / in |
+| **Governing required head thickness (apply UG-16(b))** | **t\_req\_h = max(t\_pressure\_h, t\_UG16b, t\_struct)** | | **mm / in** |
 | Required nominal thickness (t\_req\_h + CA) | | | mm / in |
 | Actual nominal head thickness (t\_h) | | | mm / in |
 | **Adequacy** | [ ] ADEQUATE [ ] INADEQUATE | | |
@@ -254,7 +284,8 @@ t_req = P_total x L_h / (2 x S x E - 0.2 x P_total)
 | Corroded inside radius of head | L\_h | | mm / in |
 | Allowable stress | S | | MPa / psi |
 | Joint efficiency | E | | - |
-| **Required head thickness** | **t\_req\_h** | | **mm / in** |
+| Pressure-required head thickness | t\_pressure\_h | | mm / in |
+| **Governing required head thickness (apply UG-16(b))** | **t\_req\_h = max(t\_pressure\_h, t\_UG16b, t\_struct)** | | **mm / in** |
 | Required nominal thickness (t\_req\_h + CA) | | | mm / in |
 | Actual nominal head thickness (t\_h) | | | mm / in |
 | **Adequacy** | [ ] ADEQUATE [ ] INADEQUATE | | |
@@ -286,7 +317,8 @@ t_req = P_total x D_c / [2 x cos(alpha) x (S x E - 0.6 x P_total)]
 | cos(alpha) | cos(alpha) | | - |
 | Allowable stress | S | | MPa / psi |
 | Joint efficiency | E | | - |
-| **Required cone thickness** | **t\_req\_cone** | | **mm / in** |
+| Pressure-required cone thickness | t\_pressure\_cone | | mm / in |
+| **Governing required cone thickness (apply UG-16(b))** | **t\_req\_cone = max(t\_pressure\_cone, t\_UG16b, t\_struct)** | | **mm / in** |
 | Required nominal thickness (t\_req\_cone + CA) | | | mm / in |
 | Actual nominal cone thickness | | | mm / in |
 | **Adequacy** | [ ] ADEQUATE [ ] INADEQUATE | | |
@@ -327,26 +359,28 @@ where t\_cc = corroded cone thickness.
 
 ---
 
-## 14. Hydrostatic Test Pressure (UG-99)
+## 14. Hydrostatic Test Pressure (UG-99(b))
 
-*Standard hydrostatic test pressure as a function of MAWP and stress ratio between test and design temperature.*
+*Standard hydrostatic test pressure as a function of MAWP and the lowest stress ratio (LSR) between test and design temperature.*
 
 ```
-P_test = 1.3 x MAWP_corroded x (S_test / S_design)
+P_test = 1.3 x MAWP_corroded x LSR
 ```
+
+where LSR = min over all pressure-boundary materials of (S\_test / S\_design).
 
 | Parameter | Symbol | Value | Unit |
 |---|---|---|---|
 | Governing MAWP (corroded) | MAWP | | kPa / psi |
 | Allowable stress at test temperature | S\_test | | MPa / psi |
 | Allowable stress at design temperature | S\_design | | MPa / psi |
-| Stress ratio | S\_test / S\_design | | - |
+| Lowest stress ratio (over all materials) | LSR = min(S\_test / S\_design) | | - |
 | **Minimum required hydrostatic test pressure** | **P\_test** | | **kPa / psi** |
 | Actual test pressure applied (if known) | P\_test\_actual | | kPa / psi |
 | Test medium | | [ ] Water [ ] Other: _______ | |
 | Test temperature | T\_test | | deg C / deg F |
 
-> Verify that P\_test does not exceed the limits for any component. For pneumatic testing (UG-100), a different multiplier and risk assessment apply - do not use this section for pneumatic tests.
+> Use the **lowest** stress ratio among **all** pressure-boundary materials, not only the governing-MAWP component. The 1.3 multiplier is the current UG-99(b) basis; older editions used a different factor - confirm the multiplier for the controlling edition. Verify that P\_test does not exceed the limits for any component. For pneumatic testing (UG-100), a different multiplier and risk assessment apply - do not use this section for pneumatic tests.
 
 ---
 
@@ -361,7 +395,7 @@ List all assumptions made in this calculation. Each assumption must be justified
 | A3 | Corrosion allowance applies uniformly to all components | Per design specification or inspection data |
 | A4 | Joint efficiency per weld examination credited above | Consistent with NDE records |
 | A5 | Static head per governing orientation rule | Per CLAUDE.md static head rule |
-| A6 | | |
+| A6 | Governing required thickness includes UG-16(b) floor | Per Section 7A |
 | A7 | | |
 
 ---
@@ -373,10 +407,10 @@ List all assumptions made in this calculation. Each assumption must be justified
 | L1 | This check sheet covers internal pressure only. External pressure, wind, seismic, nozzle loads, and combined loading are not addressed here. |
 | L2 | Nozzle reinforcement is not evaluated in this check sheet. |
 | L3 | UG-32(f) conical section formula is valid without transition knuckles. If knuckles are present, UG-32(g) (toriconical) applies and this sheet does not apply. |
-| L4 | Ellipsoidal head formula (UG-32(c)) as presented is for a standard 2:1 (h = D/4) head. Non-standard ratios require additional factors per the code. |
+| L4 | Ellipsoidal head formula (UG-32(c)) as presented is for a standard 2:1 (h = D/4) head. Non-standard ratios require the factor K per Mandatory Appendix 1-4(c). |
 | L5 | Allowable stresses are taken at the stated design temperature. If temperature varies along the vessel, each zone requires separate evaluation. |
 | L6 | This check sheet does not replace a full code calculation package. It is a structured verification aid only. |
-| L7 | Material toughness, impact test exemption, and MDMT are not addressed here. |
+| L7 | Material toughness, impact test exemption, and MDMT are screened separately using the UCS-66 MDMT screening template; they are not addressed here. |
 | L8 | | |
 
 ---
@@ -407,36 +441,45 @@ Complete each item before sign-off. Mark N/A if a component is not present.
 - [ ] P\_static is correctly calculated and added to design pressure to give P\_total
 - [ ] If orientation is unknown, static head neglect is documented as an assumption
 
-### 17.4 Shell (UG-27)
+### 17.4 Governing Required Thickness (UG-16(b))
+
+- [ ] UG-16(b) minimum thickness floor is applied to every component
+- [ ] Service-specific UG-16(b) provision checked and cited where applicable (value read from code, not from memory)
+- [ ] Governing required thickness recorded as max(t\_pressure, t\_UG16b, t\_struct)
+- [ ] Where UG-16(b) or a structural minimum governs, it is stated explicitly
+
+### 17.5 Shell (UG-27)
 
 - [ ] Both circumferential and longitudinal stress cases are evaluated
 - [ ] Correct joint efficiency is applied to each case
-- [ ] Governing required thickness is the larger of the two cases
+- [ ] Pressure-governing required thickness is the larger of the two cases
 - [ ] Required nominal thickness includes CA
 - [ ] Shell MAWP is calculated using corroded thickness and corroded inside radius
 
-### 17.5 Heads
+### 17.6 Heads
 
 - [ ] Correct UG-32 paragraph is applied for each head type
 - [ ] Corrected inside dimensions are used in head calculations
+- [ ] Ellipsoidal head confirmed as 2:1 before using the simplified UG-32(c) formula (else Appendix 1-4(c))
 - [ ] Torispherical head: L is the corroded inside crown radius
 - [ ] Conical section: half apex angle and cos(alpha) are correctly applied
 - [ ] Head MAWP is calculated using corroded head thickness
 
-### 17.6 MAWP Summary
+### 17.7 MAWP Summary
 
 - [ ] All components (shell, heads, cone) appear in MAWP summary table
 - [ ] Governing MAWP is the minimum of all component MAWPs
 - [ ] Governing MAWP >= total design pressure P\_total; if not, deficiency is flagged
 
-### 17.7 Hydrostatic Test Pressure
+### 17.8 Hydrostatic Test Pressure
 
-- [ ] Test pressure is calculated as 1.3 x MAWP\_corroded x (S\_test / S\_design)
-- [ ] Stress ratio is correctly applied; if S\_test / S\_design > 1.0, apply the ratio; if = 1.0, P\_test = 1.3 x MAWP
-- [ ] Test pressure does not impose stresses exceeding 90% of yield in any component (verify separately)
+- [ ] Test pressure is calculated as 1.3 x MAWP\_corroded x LSR
+- [ ] LSR is the lowest (S\_test / S\_design) among all pressure-boundary materials
+- [ ] Multiplier confirmed for the controlling edition
+- [ ] Test pressure does not impose stresses exceeding the code test-stress limit in any component (verify separately)
 - [ ] Test medium and temperature are recorded
 
-### 17.8 General
+### 17.9 General
 
 - [ ] No clause numbers are cited beyond those established in CLAUDE.md or independently verified
 - [ ] No values are assumed without being listed in the Assumptions section
@@ -472,4 +515,4 @@ Complete each item before sign-off. Mark N/A if a component is not present.
 
 ---
 
-*This check sheet is governed by ASME Section VIII Division 1. All calculations shall use corroded geometry. Clause references are limited to UG-27 (shells), UG-32(c) (ellipsoidal), UG-32(d) (torispherical), UG-32(e) (hemispherical), UG-32(f) (conical without transition knuckle), and UG-99 (hydrostatic test). Do not apply Division 2 rules unless separately instructed.*
+*This check sheet is governed by ASME Section VIII Division 1. All calculations shall use corroded geometry, and the governing required thickness shall apply the UG-16(b) floor per Section 7A. Clause references are limited to UG-16(b) (minimum thickness), UG-27 (shells), UG-32(c) (ellipsoidal), UG-32(d) (torispherical), UG-32(e) (hemispherical), UG-32(f) (conical without transition knuckle), and UG-99(b) (hydrostatic test). Do not apply Division 2 rules unless separately instructed.*
